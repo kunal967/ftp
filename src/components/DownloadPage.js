@@ -5,6 +5,8 @@ import DownloadStore from '../stores/DownloadStore'
 import ErrorPage from './ErrorPage'
 import ProgressBar from './ProgressBar'
 import React from 'react'
+import VerifyPassword from './VerifyPassword';
+
 import Spinner from './Spinner'
 import { formatSize } from '../util'
 
@@ -12,8 +14,22 @@ export default class DownloadPage extends React.Component {
 
   constructor() {
     super()
-    this.state = DownloadStore.getState()
-
+    this.state = {
+      ...DownloadStore.getState(),
+      passwordVerified: false,
+    };
+    
+    // verifyPassword = () => {
+    //   const { enteredPassword } = this.state;
+    //   const generatedPassword = this.props.generatedPassword;
+  
+    //   if (enteredPassword === generatedPassword) {
+    //     this.setState({ isPasswordValid: true });
+    //   } else {
+    //     this.setState({ isPasswordValid: false });
+    //   }
+    // };
+    
     this._onChange = () => {
       this.setState(DownloadStore.getState())
     }
@@ -32,28 +48,27 @@ export default class DownloadPage extends React.Component {
   downloadFile() {
     DownloadActions.requestDownload()
   }
+  
+  
 
   render() {
     switch (this.state.status) {
       case 'ready':
-        return <div className="page">
-
-          <h1>FilePizza</h1>
-          <Spinner dir="down"
-            name={this.state.fileName}
-            size={this.state.fileSize} />
-
-          <ChromeNotice />
+        return (
+          <div className="page">
+            <Spinner dir="down" name={this.state.fileName} size={this.state.fileSize} />
+            <ChromeNotice />
           <p className="notice">Peers: {this.state.peers} &middot; Up: {formatSize(this.state.speedUp)} &middot; Down: {formatSize(this.state.speedDown)}</p>
-          <DownloadButton onClick={this.downloadFile} />
+              <DownloadButton onClick={this.downloadFile} />
 
-        </div>
+          </div>
+        );
 
       case 'requesting':
       case 'downloading':
         return <div className="page">
 
-          <h1>FilePizza</h1>
+          
           <Spinner dir="down" animated
             name={this.state.fileName}
             size={this.state.fileSize} />
@@ -67,7 +82,7 @@ export default class DownloadPage extends React.Component {
       case 'done':
         return <div className="page">
 
-          <h1>FilePizza</h1>
+          
           <Spinner dir="down"
             name={this.state.fileName}
             size={this.state.fileSize} />

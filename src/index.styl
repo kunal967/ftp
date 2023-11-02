@@ -12,6 +12,17 @@ light-yellow = #FFE476
 red = #B11C17
 yellow = #DEAC11
 
+Header = #1d233b
+Footer = #a7dbf1
+
+blueD = #3d53dd
+blueM = #91a8ec
+blueL = #cee2fb
+yellowD = #ecaf16
+yellowM = #f7db88
+yellowL = #fef7cd
+
+
 @keyframes rotate {
     from { transform: rotate(0deg) }
     to { transform: rotate(360deg) }
@@ -37,7 +48,7 @@ strong {
 }
 
 p {
-    color: gray;
+    color: blueD;
     font: 18px/22px "Quicksand", sans-serif;
     text-align: center;
     margin: 0;
@@ -57,16 +68,20 @@ small {
         margin: 0 0 10px;
     }
 }
-
+.paragraph{
+    color blueD
+}
 .footer {
+    display: flex
+    justify-content: space-around
     width: 100%
     text-align: center
-    color: gray
+    
     padding: 10px 0 10px
     position: fixed
     bottom: 0
     border-radius: 5px 5px 0 0
-    background white
+    background Footer
     box-shadow 0 -2px 4px light-gray
 
     iframe {
@@ -75,8 +90,9 @@ small {
       margin-right: 10px;
     }
 
-    p {
-        font: 12px/20px "Quicksand", sans-serif;
+    p span{
+        color: blueD
+        font: 16px "Quicksand", sans-serif;
         @media (max-width: 600px) {
           font-size 14px
         }
@@ -128,6 +144,11 @@ small {
     }
 }
 
+.header{
+    background : Header
+}
+
+
 .spinner {
     width: 300px
     min-height: 300px
@@ -143,7 +164,7 @@ small {
         width: 150px
         min-height: 150px
     }
-
+   
     &:before {
         background: url(/images/pizza.png) center center / 300px 300px no-repeat
         content: ""
@@ -164,10 +185,7 @@ small {
         animation: rotate 5s infinite linear
     }
 
-    .spinner-image {
-        display: block;
-        width: 40%;
-    }
+    
 
     .spinner-name {
         font: bold 18px/20px "Quicksand", sans-serif
@@ -190,6 +208,13 @@ small {
         text-shadow: 0 0 3px #333
     }
 }
+.spinner-image  {
+        display: block;
+        width: 20%;
+    }
+     .spinner-wrapper{
+    text-align: -webkit-center;
+}
 
 .tempalink {
     display: flex
@@ -211,7 +236,7 @@ small {
     }
 
     .short-url {
-        background: light-gray
+        background: Footer
         color: dark-gray
         height: 40px
         padding: 10px 20px
@@ -239,6 +264,11 @@ small {
         width: 100px
         display: block
     }
+}
+
+.header-img{
+    height: 4em
+    margin: 20px
 }
 
 @media screen and (max-width: 850px) {
@@ -270,6 +300,10 @@ small {
             rows: auto
         }
     }
+}
+
+.logo{
+    height: 70px;
 }
 
 @media screen and (max-height: 360px) {
@@ -417,3 +451,4 @@ small {
         color: white
     }
 }
+

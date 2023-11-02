@@ -5,14 +5,14 @@ import { formatSize } from '../util'
 export default class Spinner extends React.Component {
 
   render() {
-    const classes = classnames('spinner', {
-      'spinner-animated': this.props.animated
-    })
-
-    return <div className={classes}>
+    // const classes = classnames('spinner', {
+    //   'spinner-animated': this.props.animated
+    // })
+    // className={classes}
+    return <div className='spinner-wrapper'>
       <img
         alt={this.props.name || this.props.dir}
-        src={`/images/${this.props.dir}.png`}
+        src={`/images/S-only-Logo.png`}
         className="spinner-image" />
 
       {this.props.name === null ? null

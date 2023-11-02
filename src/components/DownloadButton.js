@@ -1,4 +1,5 @@
-import React from 'react'
+import React from "react";
+import Tempalink from "./Tempalink";
 
 export default class DownloadButton extends React.Component {
   constructor() {
@@ -7,7 +8,7 @@ export default class DownloadButton extends React.Component {
   }
 
   onClick(e) {
-    this.props.onClick(e)
+    this.props.onClick(e);
   }
 
   render() {
@@ -17,9 +18,9 @@ export default class DownloadButton extends React.Component {
       Download
     </button>
   }
-
 }
 
 DownloadButton.propTypes = {
-  onClick: React.PropTypes.func.isRequired
-}
+  onClick: React.PropTypes.func.isRequired,
+  generatedPassword: React.PropTypes.string.isRequired, // Add the prop type for generatedPassword
+};
